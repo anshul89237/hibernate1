@@ -1,38 +1,34 @@
-package com.lpu.one_to_many;
+package com.lpu.Many_to_Many;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 
-public class BankAccountDriver {
+public class StuSubjectDriver {
 
 	public static void main(String[] args) {
-		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("dev");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		
-		Account a1 = new Account(10, "Raju", 150.00);
-		Account a2 = new Account(11, "Ansh", 500.00);
+		Subject sub1 = new Subject(101, "Java", "Ravi");
+		Subject sub2 = new Subject(102, "SQL", "Vaishnav");
 		
-		Bank b = new Bank(101, "SBI", "Mohali");
-		List<Account> list = new ArrayList<>();
+		List<Subject> subjects = Arrays.asList(sub1, sub2);
 		
-		list.add(a1);
-		list.add(a2);
-		b.setAccountNo(list);
+		Stu s1 = new Stu(10, "Anshul", 8983828193l, subjects);
+		Stu s2 = new Stu(11, "Raju", 9832123448l, subjects);
 		
 		et.begin();
-		em.persist(a1);
-		em.persist(a2);
-		em.persist(b);
+		em.persist(sub1);
+		em.persist(sub2);
+		em.persist(s1);
+		em.persist(s2);
 		et.commit();
-		
-   
 	}
 }
