@@ -1,0 +1,32 @@
+package com.lpu.oto_Car_Engine;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Engine {
+
+	@Id
+	private int id;
+	private String cc;
+
+	public Engine() {
+
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getCc() {
+		return cc;
+	}
+
+	public void setCc(String cc) {
+		this.cc = cc;
+	}
+}
